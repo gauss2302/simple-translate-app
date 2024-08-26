@@ -26,7 +26,7 @@ class _SwitchPageState extends State<SwitchPage> {
       );
     } else {
       return PromtScreen(
-        showPromptScreen: _toogleScreen,
+        showHomeScreen: _toogleScreen,
       );
     }
   }
