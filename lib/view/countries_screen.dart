@@ -43,59 +43,52 @@ class _CountryScreenState extends State<CountryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: RefreshIndicator(
-        onRefresh: () async {
-          _generateRandomColor();
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            children: countryData.map((country) {
-              bool isSelected = country['countryName'] == selectedCountry;
-              return Card(
-                elevation: 4,
-                color: isSelected ? backgroundColor : const Color(0xFFFFFFFF),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  side: BorderSide(
-                      color: isSelected
-                          ? Colors.transparent
-                          : const Color(0xFF6D1B7B).withOpacity(0.8),
-                      width: 0.4),
-                ),
-                child: Container(
-                  width: 180.0,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        country['countryImage']!,
-                        height: 20,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(width: 8.0),
-                      Text(country['countryName']!,
-                          style: GoogleFonts.poppins(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w300,
-                            color: isSelected
-                                ? const Color(0xFFFFFFFF)
-                                : const Color(0xFF000000),
-                          ),
-                          textAlign: TextAlign.center),
-                    ],
+    return RefreshIndicator(
+      onRefresh: () async {
+        _generateRandomColor();
+      },
+      child: Wrap(
+        spacing: 8.0,
+        runSpacing: 8.0,
+        children: countryData.map((country) {
+          bool isSelected = country['countryName'] == selectedCountry;
+          return Card(
+            elevation: 4,
+            color: isSelected ? backgroundColor : const Color(0xFFFFFFFF),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              side: BorderSide(
+                  color: isSelected
+                      ? Colors.transparent
+                      : const Color(0xFF6D1B7B).withOpacity(0.8),
+                  width: 0.4),
+            ),
+            child: Container(
+              width: 180.0,
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    country['countryImage']!,
+                    height: 20,
+                    fit: BoxFit.cover,
                   ),
-                ),
-              );
-            }).toList(), // Closing parenthesis for map and Wrap
-          ),
-        ),
+                  const SizedBox(width: 8.0),
+                  Text(country['countryName']!,
+                      style: GoogleFonts.poppins(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w300,
+                        color: isSelected
+                            ? const Color(0xFFFFFFFF)
+                            : const Color(0xFF000000),
+                      ),
+                      textAlign: TextAlign.center),
+                ],
+              ),
+            ),
+          );
+        }).toList(), // Closing parenthesis for map and Wrap
       ),
     );
   }
