@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/utils/lang_dropdown.dart';
 
 class PromtScreen extends StatefulWidget {
   final VoidCallback showHomeScreen;
@@ -10,6 +11,14 @@ class PromtScreen extends StatefulWidget {
 }
 
 class _PromtScreenState extends State<PromtScreen> {
+  String? selectedCountry;
+
+  void _changeRequiredLangugage(String? newCountry) {
+    setState(() {
+      selectedCountry = newCountry;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +51,17 @@ class _PromtScreenState extends State<PromtScreen> {
                     Icons.text_fields,
                     color: Color(0xFF000000),
                     size: 24.0,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  LangDropdown(
+                    onLangChanged: _changeRequiredLangugage,
                   ),
                 ],
               ),
