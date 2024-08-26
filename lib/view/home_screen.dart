@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_avif/flutter_avif.dart';
+import 'package:myapp/view/countries_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback showPromptScreen;
@@ -17,12 +19,19 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Color(0xFFFFFFFF),
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage("assets/img/spain.png")),
+          image: DecorationImage(image: AssetImage("assets/img/worldmap.png")),
         ),
-        child: const Padding(
+        child: Padding(
           padding: EdgeInsets.only(top: 80.0, left: 16.0, right: 16.0),
           child: Column(
-            children: [Text("data")],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: const Center(
+                  child: CountryScreen(),
+                ),
+              ),
+            ],
           ),
         ),
       ),
