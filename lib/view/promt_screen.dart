@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 
 class PromtScreen extends StatefulWidget {
-  const PromtScreen({super.key});
+  final VoidCallback showPromptScreen;
+  const PromtScreen({super.key, required this.showPromptScreen});
 
   @override
   State<PromtScreen> createState() => _PromtScreenState();
@@ -11,6 +11,8 @@ class PromtScreen extends StatefulWidget {
 class _PromtScreenState extends State<PromtScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: ActionChip(label: Text("data")),
+    );
   }
 }

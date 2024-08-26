@@ -12,7 +12,7 @@ class SwitchPage extends StatefulWidget {
 class _SwitchPageState extends State<SwitchPage> {
   bool _showHomeScreen = true;
 
-  void toogleScreen() {
+  void _toogleScreen() {
     setState(() {
       _showHomeScreen = !_showHomeScreen;
     });
@@ -21,10 +21,13 @@ class _SwitchPageState extends State<SwitchPage> {
   @override
   Widget build(BuildContext context) {
     if (_showHomeScreen) {
-      return HomeScreen();
+      return HomeScreen(
+        showPromptScreen: _toogleScreen,
+      );
     } else {
-      return PromtScreen();
+      return PromtScreen(
+        showPromptScreen: _toogleScreen,
+      );
     }
-
   }
 }
